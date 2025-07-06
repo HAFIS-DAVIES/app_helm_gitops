@@ -1,0 +1,49 @@
+# --- Image settings ---
+image:
+  repository: olayiwola1/go-web-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# --- Replica count ---
+replicaCount: 2
+
+# --- Service settings ---
+service:
+  type: ClusterIP
+  port: 80
+
+# --- Ingress settings ---
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: myapp.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []  # Example for TLS, can be filled as needed
+
+# --- Resources (requests and limits) ---
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+# --- Autoscaling (HPA) ---
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+# --- Node selector, tolerations, affinity ---
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
