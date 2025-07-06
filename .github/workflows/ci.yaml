@@ -66,7 +66,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/go-gitops-webapp:${{ github.run_id }}
+          tags:  |
+              ${{ secrets.DOCKER_USERNAME }}/go-gitops-webapp:${{ github.run_id }}
+              ${{ secrets.DOCKER_USERNAME }}/go-gitops-webapp:latest
 
   update-helm-chart:
     runs-on: ubuntu-latest
@@ -80,7 +82,7 @@ jobs:
       - name: Update Helm chart values
         run: |
           # Update the image repository and tag in the Helm chart values file
-          sed -i 's/tag: .*/tag: "${{ github.run_id }}"/' k8s/helm/go-gitops-webapp-chart/values.yaml
+          sed -i 's/tag: .*/tag: "${{ github.run_id }}"/' helm/go-gitops-webapp-chart/values.yaml
           
 
       - name: Commit and push changes
