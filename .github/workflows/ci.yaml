@@ -91,5 +91,5 @@ jobs:
           git config --global user.email "${{ secrets.EMAIL }}"
           git config --global user.name "${{ secrets.NAME }}"
           git add k8s/helm/go-gitops-webapp-chart/values.yaml
-          git commit -m "Update Helm chart values for deployment ${{ github.run_id }} [skip-ci]"
+          git commit -m "Update Helm chart values for deployment"
           git push
