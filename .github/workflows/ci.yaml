@@ -6,6 +6,12 @@ on:
     paths-ignore:
       - 'README.md'
       - 'helm/**'
+
+concurrency:
+  group: app_helm_gitops-main
+  # This ensures that only one workflow runs at a time for the main branch.
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -74,7 +80,8 @@ jobs:
       - name: Update Helm chart values
         run: |
           # Update the image repository and tag in the Helm chart values file
-          sed -i 's/tag: .*/tag: "${{ github.run_id }}"/' k8s/helm/go-gitops-webapp-chart/values.yaml
+          #sed -i 's/tag: .*/tag: "${{ github.run_id }}"/' k8s/helm/go-gitops-webapp-chart/values.yaml
+          sed -i "s/tag: .*/tag: \"${{ github.run_id }}\"/" k8s/helm/go-gitops-webapp-chart/values.yaml
 
       - name: Commit and push changes
         run: |
