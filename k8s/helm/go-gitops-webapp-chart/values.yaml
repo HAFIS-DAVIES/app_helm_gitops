@@ -1,6 +1,7 @@
 # --- Image settings ---
 image:
-  repository: olayiwola1/go-web-app
+  repository: olayiwola1/go-gitops-webapp
+  # The tag is dynamically updated in the CI workflow, but can be set here as a
   tag: "16094760816"
   pullPolicy: IfNotPresent
 
