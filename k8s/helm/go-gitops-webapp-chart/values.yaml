@@ -2,7 +2,7 @@
 image:
   repository: olayiwola1/go-gitops-webapp
   # The tag is dynamically updated in the CI workflow, but can be set here as a
-  tag: "16095913017"
+  tag: "16095922705"
   pullPolicy: IfNotPresent
 
 # --- Replica count ---
