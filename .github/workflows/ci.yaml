@@ -6,9 +6,6 @@ on:
     paths-ignore:
       - 'README.md'
       - 'helm/**'
-  pull_request:
-    branches:
-      - main
 jobs:
   build:
     runs-on: ubuntu-latest
