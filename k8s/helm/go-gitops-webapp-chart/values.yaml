@@ -1,7 +1,7 @@
 # --- Image settings ---
 image:
   repository: olayiwola1/go-web-app
-  tag: "v1"
+  tag: "16094531230"
   pullPolicy: IfNotPresent
 
 # --- Replica count ---
